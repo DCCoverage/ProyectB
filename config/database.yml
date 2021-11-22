@@ -8,12 +8,12 @@ default: &default
 
 production:
   <<: *default
-  database: myapp_production
+  database: proyectb_production
 
 development:
   <<: *default
-  database: myapp_development
+  database: proyectb_development
 
 test:
   <<: *default
-  database: myapp_test
+  database: proyectb_test
