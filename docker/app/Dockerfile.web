@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y  \
 WORKDIR /usr/src/app
 
 # Install node dependencies
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock app/javascript/jsconfig.json ./
 RUN yarn install
 
 # Add node_modules binaries to the PATH
