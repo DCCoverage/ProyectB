@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  show_time: one
+  row: MyString
+  column: 1
+
+two:
+  show_time: two
+  row: MyString
+  column: 1
