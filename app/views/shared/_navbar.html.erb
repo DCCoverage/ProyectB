@@ -1,6 +1,6 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
+    <a class="navbar-item" href="/">
       <%= render inline: Rails.root.join('public/logo.svg').read %>
     </a>
 
@@ -19,7 +19,7 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <%= link_to 'Carteleta', movies_catalog_path, class: 'navbar-item' %>
+      <%= link_to 'Películas Disponibles', movies_path, class: 'navbar-item' %>
       <a class="navbar-item"> Home </a>
 
       <a class="navbar-item"> </a>
