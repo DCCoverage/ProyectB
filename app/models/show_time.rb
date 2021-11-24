@@ -1,2 +1,0 @@
-class ShowTime < ApplicationRecord
-end
