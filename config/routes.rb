@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :api do
-    get '/hello', to: 'hello#say_hello'
-  end
-
-  root 'application#index'
-  get '/*path', to: 'application#index'
+  root :to => "hello#index"
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

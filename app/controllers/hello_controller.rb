@@ -1,4 +1,4 @@
 class HelloController < ApplicationController
-  def say_hello
+  def index
   end
 end
