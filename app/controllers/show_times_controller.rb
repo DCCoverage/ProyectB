@@ -76,7 +76,7 @@ class ShowTimesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def show_time_params
-    params.require(:show_time).permit(:movie_id, :room_id, :when)
+    params.require(:show_time).permit(:movie_id, :room_id, :when, :date)
   end
 
   def set_movie
