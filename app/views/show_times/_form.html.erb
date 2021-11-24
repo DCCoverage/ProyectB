@@ -1,7 +1,7 @@
-<%= form_with(model: show_time, local: true) do |form| %>
-  <% if show_time.errors.any? %>
+<%= form_for @show_time, url:url, method:method do |form| %>
+  <% if @show_time.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(show_time.errors.count, "error") %> prohibited this show_time from being saved:</h2>
+      <h2><%= pluralize(@show_time.errors.count, "error") %> prohibited this show_time from being saved:</h2>
 
       <ul>
         <% show_time.errors.full_messages.each do |message| %>

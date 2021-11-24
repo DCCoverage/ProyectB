@@ -1,6 +1,13 @@
 <h1>Editing Show Time</h1>
 
-<%= render 'form', show_time: @show_time %>
+<%=
+  render partial: 'form',
+         show_time: @show_time,
+         locals: {
+           url: show_time_path(@show_time),
+           method: :put,
+         }
+%>
 
 <%= link_to 'Show', @show_time %> |
 <%= link_to 'Back', show_times_path %>
