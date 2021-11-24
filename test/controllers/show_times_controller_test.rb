@@ -17,7 +17,7 @@ class ShowTimesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create show_time" do
     assert_difference('ShowTime.count') do
-      post show_times_url, params: { show_time: {  } }
+      post show_times_url, params: { show_time: { movie_id: @show_time.movie_id, room_id: @show_time.room_id, when: @show_time.when } }
     end
 
     assert_redirected_to show_time_url(ShowTime.last)
@@ -34,7 +34,7 @@ class ShowTimesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update show_time" do
-    patch show_time_url(@show_time), params: { show_time: {  } }
+    patch show_time_url(@show_time), params: { show_time: { movie_id: @show_time.movie_id, room_id: @show_time.room_id, when: @show_time.when } }
     assert_redirected_to show_time_url(@show_time)
   end
 

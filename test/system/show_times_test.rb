@@ -14,6 +14,9 @@ class ShowTimesTest < ApplicationSystemTestCase
     visit show_times_url
     click_on "New Show Time"
 
+    fill_in "Movie", with: @show_time.movie_id
+    fill_in "Room", with: @show_time.room_id
+    fill_in "When", with: @show_time.when
     click_on "Create Show time"
 
     assert_text "Show time was successfully created"
@@ -24,6 +27,9 @@ class ShowTimesTest < ApplicationSystemTestCase
     visit show_times_url
     click_on "Edit", match: :first
 
+    fill_in "Movie", with: @show_time.movie_id
+    fill_in "Room", with: @show_time.room_id
+    fill_in "When", with: @show_time.when
     click_on "Update Show time"
 
     assert_text "Show time was successfully updated"
