@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rooms
   resources :show_times
   resources :movies
   root to: 'hello#index'
