@@ -1,5 +1,6 @@
 class MovieTicketsController < ApplicationController
   before_action :set_movie_ticket, only: %i[ show edit update destroy ]
+  before_action :set_show_time, only: %i[new create]
 
   # GET /movie_tickets or /movie_tickets.json
   def index
@@ -12,7 +13,7 @@ class MovieTicketsController < ApplicationController
 
   # GET /movie_tickets/new
   def new
-    @movie_ticket = MovieTicket.new
+    @movie_ticket = @show_time.movie_tickets.new
   end
 
   # GET /movie_tickets/1/edit
@@ -21,7 +22,7 @@ class MovieTicketsController < ApplicationController
 
   # POST /movie_tickets or /movie_tickets.json
   def create
-    @movie_ticket = MovieTicket.new(movie_ticket_params)
+    @movie_ticket = @show_time.movie_tickets.new(movie_ticket_params)
 
     respond_to do |format|
       if @movie_ticket.save
@@ -60,6 +61,10 @@ class MovieTicketsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_movie_ticket
       @movie_ticket = MovieTicket.find(params[:id])
+    end
+
+    def set_show_time
+      @show_time = ShowTime.find(params[:show_time_id]) if params[:show_time_id]
     end
 
     # Only allow a list of trusted parameters through.
