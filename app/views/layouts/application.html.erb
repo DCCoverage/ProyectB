@@ -11,13 +11,25 @@
                           'data-turbolinks-track': 'reload'
     %>
     <%= javascript_pack_tag 'application' %>
-    <%= javascript_include_tag 'rails-ujs' %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
 
   <body>
+    <% if notice %>
+      <div id="notice" class="notification is-primary">
+        <button
+          id="notice-delete"
+          class="delete"
+          onclick="document.body.removeChild(this.parentNode)"
+        ></button>
+        <%= notice %>
+      </div>
+    <% end %>
+
     <%= render 'shared/navbar' %>
-    <%= yield %>
+    <main class="container mx-auto mt-28 px-5 flex">
+      <%= yield %>
+    </main>
   </body>
 </html>
