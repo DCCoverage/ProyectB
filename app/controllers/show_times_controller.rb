@@ -1,6 +1,6 @@
 class ShowTimesController < ApplicationController
   before_action :set_show_time, only: %i[show edit update destroy]
-  before_action :set_movie, only: %i[new create show index]
+  before_action :set_movie, only: %i[new create index]
 
   # GET /show_times or /show_times.json
   def index
@@ -20,7 +20,7 @@ class ShowTimesController < ApplicationController
 
   # POST /show_times or /show_times.json
   def create
-    @show_time = ShowTime.new(show_time_params)
+    @show_time = @movie.show_times.new(show_time_params)
 
     respond_to do |format|
       if @show_time.save

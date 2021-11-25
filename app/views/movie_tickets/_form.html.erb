@@ -1,10 +1,10 @@
-<%= form_with(model: movie_ticket, local: true) do |form| %>
-  <% if movie_ticket.errors.any? %>
+<%= form_for @movie_ticket, url:url, method:method do |form| %>
+  <% if @movie_ticket.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(movie_ticket.errors.count, "error") %> prohibited this movie_ticket from being saved:</h2>
+      <h2><%= pluralize(@movie_ticket.errors.count, "error") %> prohibited this movie_ticket from being saved:</h2>
 
       <ul>
-        <% movie_ticket.errors.full_messages.each do |message| %>
+        <% @movie_ticket.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
