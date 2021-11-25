@@ -25,7 +25,7 @@ class ShowTimesController < ApplicationController
     respond_to do |format|
       if @show_time.save
         format.html do
-          redirect_to movie_show_time_path(@movie, @show_time), notice: 'Show time was successfully created.'
+          redirect_to movie_show_times_path(@movie, @show_time), notice: 'Show time was successfully created.'
         end
         format.json { render :show, status: :created, location: @show_time }
       else
