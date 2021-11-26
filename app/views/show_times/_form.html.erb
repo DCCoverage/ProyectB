@@ -22,17 +22,20 @@
 
   <div class="field">
     <%= form.label 'Sala', class: 'label' %>
-    <%= collection_select(:show_time, :room_id, Room.all, :id, :name,
-        {:prompt => true}, {:required =>true, :class => "select" }) %>
+    <div class="select">
+      <%= collection_select(:show_time, :room_id, Room.all, :id, :name,
+        {:prompt => true}, {:required =>true }) %>
+    </div>
   </div>
 
   <div class="field">
     <%= form.label 'Horario', class: 'label' %>
-
-    <%= form.select(:when, [['matine', 'morning'], ['tanda', 'afternoon'], ['noche', 'evening']]) %>
+    <div class="select">
+      <%= form.select(:when, [['matine', 'morning'], ['tanda', 'afternoon'], ['noche', 'evening']]) %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit method == :post ? 'Crear función' : 'Editar función' %>
+    <%= form.submit method == :post ? 'Crear función' : 'Editar función', class: 'button' %>
   </div>
 <% end %>

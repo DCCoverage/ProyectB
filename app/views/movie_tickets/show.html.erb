@@ -15,5 +15,5 @@
   <%= @movie_ticket.column %>
 </p>
 
-<%= link_to 'Editar', edit_movie_ticket_path(@movie_ticket) %> |
-<%= link_to 'Atrás', movie_tickets_path %>
+<%= link_to 'Editar', edit_movie_ticket_path(@movie_ticket), class: 'button' %>
+<%= link_to 'Atrás', show_time_path(@movie_ticket.show_time), class: 'button' %>

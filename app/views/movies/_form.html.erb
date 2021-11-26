@@ -12,24 +12,37 @@
   <% end %>
 
   <div class="field">
-  <label class="label">
-  <%= form.label 'Nombre' %>
-  </label>
+    <label class="label">
+      <%= form.label 'Nombre' %>
+    </label>
     <%= form.text_field :name , class: 'input' %>  
   </div>
 
   <div class="field">
-  <label class="label">
-    <%= form.label 'Descripción' %>
-  </label>
+    <label class="label">
+      <%= form.label 'Descripción' %>
+    </label>
     <%= form.text_area :description, class: 'input' %>
   </div>
 
 
-    <div class="field">
-      <%= form.label 'Imagen', class: 'label' %>
-      <%= form.file_field :image %>
+  <div class="field">
+    <%= form.label 'Imagen', class: 'label' %>
+    <div class="file">
+      <label class="file-label">
+        <%= form.file_field :image, class: 'file-input' %>
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label">
+            Seleccionar archivo…
+          </span>
+        </span>
+      </label>
+    </div>
   </div>
+</div>
 
 
   <div class="actions">
