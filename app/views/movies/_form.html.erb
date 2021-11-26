@@ -13,28 +13,26 @@
 
   <div class="field">
   <label class="label">
-  <%= form.label :name %>
+  <%= form.label 'Nombre' %>
   </label>
     <%= form.text_field :name , class: 'input' %>  
   </div>
 
   <div class="field">
   <label class="label">
-      <%= form.label :description %>
-
+    <%= form.label 'Descripción' %>
   </label>
-    <%= form.text_field :description, class: 'input' %>
+    <%= form.text_area :description, class: 'input' %>
   </div>
 
 
     <div class="field">
-            <%= form.label :image, class: 'label' %>
-
-        <%= form.file_field :image %>
+      <%= form.label 'Imagen', class: 'label' %>
+      <%= form.file_field :image %>
   </div>
 
 
   <div class="actions">
-    <%= form.submit class: 'button'%>
+    <%= form.submit movie.new_record? ? 'Crear película' : 'Editar película', class: 'button'%>
   </div>
 <% end %>

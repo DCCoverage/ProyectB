@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :row %>
-    <%= form.button_field :row %>
+    <%= form.label 'Fila' %>
+    <%= form.select(:row, ['A', 'B', 'C', 'D']) %>
   </div>
 
   <div class="field">
-    <%= form.label :column %>
-    <%= form.number_field :column %>
+    <%= form.label 'Columna' %>
+    <%= form.select(:column, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit method == :post ? 'Crear ticket' : 'Editar ticket' %>
   </div>
 <% end %>

@@ -28,9 +28,9 @@
           <td><%= show_time.room_id %></td>
           <td><%= show_time.date %></td>
           <td><%= show_time.when %></td>
-          <td><%= link_to 'Show', show_time, class: 'button'  %></td>
-          <td><%= link_to 'Edit', edit_show_time_path(show_time), class: 'button'  %></td>
-          <td><%= link_to 'Destroy', show_time, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button'  %></td>
+          <td><%= link_to 'Detalle', show_time, class: 'button'  %></td>
+          <td><%= link_to 'Editar', edit_show_time_path(show_time), class: 'button'  %></td>
+          <td><%= link_to 'Eliminar', show_time, method: :delete, data: { confirm: 'Estas seguro?' }, class: 'button'  %></td>
         </tr>
         <% end %>
       </tbody>

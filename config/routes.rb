@@ -2,7 +2,6 @@ Rails
   .application
   .routes
   .draw do
-    resources :rooms
     resources :movies do
       resources :show_times, only: %i[new create index]
     end
