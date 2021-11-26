@@ -1,17 +1,8 @@
-
 <div class="columns is-centered">
   <div class="form-container box">
     <h1 class="title">Nueva Función</h1>
-    <%=
-  render partial: 'form',
-         show_time: @show_time,
-         locals: {
-           url: movie_show_times_path,
-           method: :post,
-         }
-%>
+    <%= render partial: 'form', show_time: @show_time, locals: { url: movie_show_times_path, method: :post } %>
 
-    <%= link_to 'Back', show_times_path %>
-
+    <%= link_to 'Atrás', show_times_path, class: 'button' %>
   </div>
 </div>

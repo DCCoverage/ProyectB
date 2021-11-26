@@ -12,16 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= form.label 'Fila' %>
-    <%= form.select(:row, ['A', 'B', 'C', 'D']) %>
+    <label class="label">
+      <%= form.label 'Fila' %>
+    </label>
+    <div class="select">
+      <%= form.select(:row, ['A', 'B', 'C', 'D']) %>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label 'Columna' %>
-    <%= form.select(:column, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) %>
+    <label class="label">
+      <%= form.label 'Columna' %>
+    </label>
+    <div class="select">
+      <%= form.select(:column, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit method == :post ? 'Crear ticket' : 'Editar ticket' %>
+    <%= form.submit method == :post ? 'Comprar entrada' : 'Editar entrada', class: 'button' %>
   </div>
 <% end %>

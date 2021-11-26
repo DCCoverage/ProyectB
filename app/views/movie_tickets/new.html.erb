@@ -1,5 +1,5 @@
 <h1 class="title">Reserva de Ticket</h1>
-<p>Película: <%= @movie_ticket.show_time.movie.name %></p>
+<p class="subtitle">Película: <%= @movie_ticket.show_time.movie.name %></p>
 
 <%=
   render partial: 'form',
@@ -10,4 +10,4 @@
          }
 %>
 
-<%= link_to 'Atrás', movie_tickets_path %>
+<%= link_to 'Atrás', movie_tickets_path, class: 'button' %>
