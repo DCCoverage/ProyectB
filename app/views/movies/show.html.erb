@@ -1,18 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="tile is-ancestor">
+  <p id="notice"><%= notice %></p>
+  <div class="tile is-4">
+        <%= image_tag @movie.image %>
+  </div>
+  <div class="tile is-vertical box">
+    <div class="tile is-vertical has-text-centered">
+      <p class="title">
+        <strong>Nombre:</strong>
+        <%= @movie.name %>
+      </p>
+      <p class="subtitle">
+        <strong>Descripción:</strong>
+        <%= @movie.description %>
+      </p>
+    </div>
+    <div class="tile center">
+      <%= link_to 'Nueva función', new_movie_show_time_path(@movie), class: 'button' %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @movie.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @movie.description %>
-</p>
-
-<%= image_tag @movie.image %>
-
-<%= link_to 'Nueva función', new_movie_show_time_path(@movie), class: 'button' %>
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+      <%= link_to 'Edit', edit_movie_path(@movie), class: 'button' %>
+      <%= link_to 'Back', movies_path, class: 'button' %>
+    </div>
+  </div>
+</div>

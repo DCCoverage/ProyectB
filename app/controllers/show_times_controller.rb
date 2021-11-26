@@ -42,7 +42,7 @@ class ShowTimesController < ApplicationController
     respond_to do |format|
       if @show_time.update(show_time_params)
         format.html do
-          redirect_to movie_show_time_path(@show_time.movie, @show_time), notice: 'Show time was successfully updated.'
+          redirect_to movie_show_times_path(@show_time.movie, @show_time), notice: 'Show time was successfully updated.'
         end
         format.json { render :show, status: :ok, location: @show_time }
       else
