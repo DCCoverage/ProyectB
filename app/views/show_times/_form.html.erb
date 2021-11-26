@@ -4,34 +4,35 @@
       <h2><%= pluralize(@show_time.errors.count, "error") %> prohibited this show_time from being saved:</h2>
 
       <ul>
-        <% show_time.errors.full_messages.each do |message| %>
+        <% @show_time.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :movie_id %>
-    <%= form.text_field :movie_id %>
+  <div class="subtitle">
+    <label class="label"><%= @show_time.movie.name %></label>
   </div>
 
   <div class="field">
-    <%= form.label :date %>
-    <%= form.date_field :date %>
+    <%= form.label 'Fecha', class: 'label' %>
+    <%= form.date_field :date, class: 'input' %>
   </div>
 
   <div class="field">
-    <%= form.label :room_id %>
-    <%= form.text_field :room_id %>
+    <%= form.label 'Sala', class: 'label' %>
+    <%= collection_select(:show_time, :room_id, Room.all, :id, :name,
+        {:prompt => true}, {:required =>true, :class => "select" }) %>
   </div>
 
   <div class="field">
-    <%= form.label :when %>
-    <%= form.text_field :when %>
+    <%= form.label 'Horario', class: 'label' %>
+
+    <%= form.select(:when, [['matine', 'morning'], ['tanda', 'afternoon'], ['noche', 'evening']]) %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit method == :post ? 'Crear función' : 'Editar función' %>
   </div>
 <% end %>

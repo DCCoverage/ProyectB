@@ -1,30 +1,40 @@
 <p id="notice"><%= notice %></p>
+<section>
+  <h1 class="title">Cartelera</h1>
+</section>
+<section>
+  <div class="box">
+    <table class="table is-fullwidth">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Pelicula</th>
+          <th>Sala</th>
+          <th>Fecha</th>
+          <th>Función</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<h1>Show Times</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Movie</th>
-      <th>Room</th>
-      <th>When</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @show_times.each do |show_time| %>
-      <tr>
-        <td><%= show_time.movie_id %></td>
-        <td><%= show_time.room_id %></td>
-        <td><%= show_time.date %></td>
-        <td><%= show_time.when %></td>
-        <td><%= link_to 'Show', show_time %></td>
-        <td><%= link_to 'Edit', edit_show_time_path(show_time) %></td>
-        <td><%= link_to 'Destroy', show_time, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+      <tbody>
+        <% @show_times.each do |show_time| %>
+        <tr>
+          <td>
+            <figure class="image is-128x128 is-1by1">
+            <img src="<%=(url_for(show_time.movie.image))%>">
+            </figure>
+          </td>
+          <td><%= show_time.movie.name %></td>
+          <td><%= show_time.room_id %></td>
+          <td><%= show_time.date %></td>
+          <td><%= show_time.when %></td>
+          <td><%= link_to 'Detalle', show_time, class: 'button'  %></td>
+          <td><%= link_to 'Editar', edit_show_time_path(show_time), class: 'button'  %></td>
+          <td><%= link_to 'Eliminar', show_time, method: :delete, data: { confirm: 'Estas seguro?' }, class: 'button'  %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
 <br>
