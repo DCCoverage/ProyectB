@@ -6,12 +6,16 @@ default: &default
 development:
   <<: *default
   database: proyecto_b_development
+  username: proyecto_b
+  password: <%= ENV['PROYECTO_B_DATABASE_PASSWORD'] %>
+
   host: localhost
 
 test:
   <<: *default
   database: proyecto_b_test
   password: <%= ENV['PROYECTO_B_DATABASE_PASSWORD'] %>
+  username: proyecto_b
   host: localhost
 
 production:
