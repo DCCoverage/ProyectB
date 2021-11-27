@@ -1,7 +1,10 @@
 <%= form_for @movie_ticket, url:url, method:method do |form| %>
   <% if @movie_ticket.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@movie_ticket.errors.count, "error") %> prohibited this movie_ticket from being saved:</h2>
+      <h2>
+        <%= pluralize(@movie_ticket.errors.count, 'error') %> prohibited this
+        movie_ticket from being saved:
+      </h2>
 
       <ul>
         <% @movie_ticket.errors.full_messages.each do |message| %>
@@ -10,26 +13,42 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <label class="label">
-      <%= form.label 'Fila' %>
-    </label>
-    <div class="select">
-      <%= form.select(:row, ['A', 'B', 'C', 'D']) %>
-    </div>
-  </div>
-
-  <div class="field">
-    <label class="label">
-      <%= form.label 'Columna' %>
-    </label>
-    <div class="select">
-      <%= form.select(:column, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) %>
-    </div>
-  </div>
+  <ul>
+    <% ['A', 'B', 'C', 'D'].each do |seat_row| %>
+      <span class="seat-row-movie-ticket"><%= seat_row %></span>
+      <div class="seat-row-display">
+        <% [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] .each do |seat_col| %>
+          <% if @used_seats.include? "#{seat_row}-#{seat_col}" %>
+            <span class="seat-number-movie-ticket"><%= seat_col %></span>
+            <span class="icon-text">
+              <span class="icon">
+                <i class="used-seat fas fa-chair fa-3x"></i>
+              </span>
+            </span>
+          <% else %>
+            <label class="checkbox">
+              <input type="checkbox" name="seats[<%= "#{seat_row}-#{seat_col}" %>]" />
+              <span class="seat-number-movie-ticket"><%= seat_col %></span>
+            </label>
+            <span class="icon-text">
+              <span class="icon">
+                <i class="free-seat fas fa-chair fa-3x"></i>
+              </span>
+            </span>
+          <% end %>
+        <% end %>
+      </div>
+      <hr />
+      <br />
+    <% end %>
+  </ul>
 
   <div class="actions">
-    <%= form.submit method == :post ? 'Comprar entrada' : 'Editar entrada', class: 'button' %>
+    <%=
+      form.submit(
+        method == :post ? 'Comprar entrada' : 'Editar entrada',
+        class: 'button'
+      )
+    %>
   </div>
 <% end %>
