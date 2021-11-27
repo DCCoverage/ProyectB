@@ -1,0 +1,17 @@
+<% if flash[:error] %>
+  <article class="message is-danger">
+    <div class="message-body">
+      <%= flash[:error] %>
+    </div>
+  </article>
+<% end %>
+
+<%= form_with url: purchase_tickets_show_time_path(@show_time), method: :post do |form| %>
+  <% %w[A B C D].each do |row| %>
+    <% (1...12).each do |column| %>
+      <%= form.check_box "tickets[#{row}-#{column}]", class: 'seat' %>
+      <%= form.label "tickets[#{row}-#{column}]", "#{row}#{column}" %>
+    <% end %>
+  <% end %>
+  <%= form.submit 'Reservar asientos' %>
+<% end %>

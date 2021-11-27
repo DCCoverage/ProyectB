@@ -19,8 +19,8 @@
         <strong>Función:</strong>
         <%= @show_time.when %>
       </p>
-      <%= link_to 'Comprar entrada', new_show_time_movie_ticket_path(@show_time), class: 'button' %> 
-      <%= link_to 'Editar', edit_show_time_path(@show_time) , class: 'button'%> 
+      <%= link_to 'Seleccionar asientos', select_tickets_show_time_path(@show_time), class: 'button' %>
+      <%= link_to 'Editar', edit_show_time_path(@show_time) , class: 'button'%>
       <%= link_to 'Atrás', show_times_path , class: 'button'%>
     </div>
   </div>

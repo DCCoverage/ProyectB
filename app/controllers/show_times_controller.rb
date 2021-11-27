@@ -1,5 +1,13 @@
 class ShowTimesController < ApplicationController
-  before_action :set_show_time, only: %i[show edit update destroy]
+  before_action :set_show_time,
+                only: %i[
+                  show
+                  edit
+                  update
+                  destroy
+                  select_tickets
+                  purchase_tickets
+                ]
   before_action :set_movie, only: %i[new create index]
 
   # GET /show_times or /show_times.json
@@ -25,7 +33,8 @@ class ShowTimesController < ApplicationController
     respond_to do |format|
       if @show_time.save
         format.html do
-          redirect_to movie_show_times_path(@movie, @show_time), notice: 'Show time was successfully created.'
+          redirect_to movie_show_times_path(@movie, @show_time),
+                      notice: 'Show time was successfully created.'
         end
         format.json { render :show, status: :created, location: @show_time }
       else
@@ -42,7 +51,8 @@ class ShowTimesController < ApplicationController
     respond_to do |format|
       if @show_time.update(show_time_params)
         format.html do
-          redirect_to movie_show_times_path(@show_time.movie, @show_time), notice: 'Show time was successfully updated.'
+          redirect_to movie_show_times_path(@show_time.movie, @show_time),
+                      notice: 'Funcion creada correctamente.'
         end
         format.json { render :show, status: :ok, location: @show_time }
       else
@@ -64,6 +74,45 @@ class ShowTimesController < ApplicationController
                     notice: 'Show time was successfully destroyed.'
       end
       format.json { head :no_content }
+    end
+  end
+
+  def select_tickets
+    respond_to do |format|
+      @occupied_tickets =
+        @show_time
+          .movie_tickets
+          .all
+          .map { |ticket| "#{ticket.row}-#{ticket.column}" }
+      format.html { render :select_tickets, locals: { tickets_error: nil } }
+    end
+  end
+
+  def purchase_tickets
+    respond_to do |format|
+      ActiveRecord::Base.transaction do
+        params[:tickets].each do |ticket, _|
+          row, column = ticket.split('-')
+          MovieTicket.create! row: row, column: column, show_time: @show_time
+        end
+      end
+    rescue ActiveRecord::RecordInvalid => e
+      format.html do
+        redirect_to select_tickets_show_time_path(@show_time),
+                    flash: {
+                      error: e.record.errors.values.map(&:join).join(' ')
+                    }
+      end
+    rescue ActiveRecord::RecordNotUnique
+      format.html do
+        redirect_to select_tickets_show_time_path(@show_time),
+                    notice: 'Seleccionaste asientos que ya están ocupados'
+      end
+    else
+      format.html do
+        redirect_to movie_show_times_path(@show_time.movie, @show_time),
+                    notice: 'Asientos reservados correctamente'
+      end
     end
   end
 
