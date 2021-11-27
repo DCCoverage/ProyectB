@@ -14,6 +14,11 @@ class MovieTicketsController < ApplicationController
   # GET /movie_tickets/new
   def new
     @movie_ticket = @show_time.movie_tickets.new
+
+    @used_seats = []
+    @show_time.movie_tickets.each do |iter_seat|
+      @used_seats.append("#{iter_seat.row}-#{iter_seat.column}")
+    end
   end
 
   # GET /movie_tickets/1/edit

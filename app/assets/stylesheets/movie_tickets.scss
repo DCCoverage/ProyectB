@@ -1,3 +1,27 @@
 // Place all the styles related to the MovieTickets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.used-seat{
+    color:red
+}
+
+.free-seat{
+    color:green
+}
+
+.seat-number-movie-ticket{
+    display: table-cell;
+    text-align: center;
+    font-size:20px
+}
+
+.seat-row-movie-ticket{
+    font-size:30px
+}
+
+.seat-row-display{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
