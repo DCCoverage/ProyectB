@@ -1,14 +1,16 @@
 <%= form_for @show_time, url:url, method:method do |form| %>
   <% if @show_time.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@show_time.errors.count, "error") %> prohibited this show_time from being saved:</h2>
-
-      <ul>
-        <% @show_time.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+      <article class="tile is-ancestor">
+        <% @show_time.errors.messages.each do |_, messages| %>
+          <% messages.each do |message| %>
+            <article class="message is-danger">
+              <div class="message-body">
+                <%= message %>
+              </div>
+            </article>
+          <% end %>
         <% end %>
-      </ul>
-    </div>
+      </article class="tile is-ancestor">
   <% end %>
 
   <div class="subtitle">
