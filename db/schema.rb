@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2021_11_27_020741) do
     t.datetime "updated_at", precision: 6, null: false
     t.date "date"
     t.index ["movie_id"], name: "index_show_times_on_movie_id"
+    t.index ["room_id", "when"], name: "index_show_times_on_room_id_and_when", unique: true
     t.index ["room_id"], name: "index_show_times_on_room_id"
   end
 
