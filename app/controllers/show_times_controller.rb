@@ -61,7 +61,7 @@ class ShowTimesController < ApplicationController
     respond_to do |format|
       format.html do
         redirect_to movie_show_times_url(movie),
-                    notice: 'Show time was successfully destroyed.'
+                    notice: 'La función fue eliminada.'
       end
       format.json { head :no_content }
     end
