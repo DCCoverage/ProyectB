@@ -27,4 +27,4 @@ RSpec.describe 'Create Movie', type: :system do
             expect(find('p', text: 'Nombre')).to have_text('Venom 2')
         end
     end
-end 
+end
