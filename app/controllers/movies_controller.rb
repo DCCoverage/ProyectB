@@ -24,7 +24,7 @@ class MoviesController < ApplicationController
     respond_to do |format|
       if @movie.save
         format.html do
-          redirect_to @movie, notice: 'Movie was successfully created.'
+          redirect_to @movie, notice: 'Película creada con éxito.'
         end
         format.json { render :show, status: :created, location: @movie }
       else
@@ -41,7 +41,7 @@ class MoviesController < ApplicationController
     respond_to do |format|
       if @movie.update(movie_params)
         format.html do
-          redirect_to @movie, notice: 'Movie was successfully updated.'
+          redirect_to @movie, notice: 'Película actualizada con éxito.'
         end
         format.json { render :show, status: :ok, location: @movie }
       else
@@ -58,7 +58,7 @@ class MoviesController < ApplicationController
     @movie.destroy
     respond_to do |format|
       format.html do
-        redirect_to movies_url, notice: 'Movie was successfully destroyed.'
+        redirect_to movies_url, notice: 'Película eliminada con éxito.'
       end
       format.json { head :no_content }
     end

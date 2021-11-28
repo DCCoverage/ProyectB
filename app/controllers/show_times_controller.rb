@@ -34,7 +34,7 @@ class ShowTimesController < ApplicationController
       if @show_time.save
         format.html do
           redirect_to movie_show_times_path(@movie, @show_time),
-                      notice: 'Show time was successfully created.'
+                      notice: 'Función creada con éxito.'
         end
         format.json { render :show, status: :created, location: @show_time }
       else
@@ -52,7 +52,7 @@ class ShowTimesController < ApplicationController
       if @show_time.update(show_time_params)
         format.html do
           redirect_to movie_show_times_path(@show_time.movie, @show_time),
-                      notice: 'Funcion creada correctamente.'
+                      notice: 'Función actualizada con éxito.'
         end
         format.json { render :show, status: :ok, location: @show_time }
       else
@@ -71,7 +71,7 @@ class ShowTimesController < ApplicationController
     respond_to do |format|
       format.html do
         redirect_to movie_show_times_url(movie),
-                    notice: 'Show time was successfully destroyed.'
+                    notice: 'Función eliminada con éxito.'
       end
       format.json { head :no_content }
     end
