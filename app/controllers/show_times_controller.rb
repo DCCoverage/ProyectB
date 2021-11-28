@@ -12,7 +12,7 @@ class ShowTimesController < ApplicationController
 
   # GET /show_times or /show_times.json
   def index
-    @show_times = @movie ? @movie.show_times : ShowTime.all
+    @show_times = @movie ? @movie.show_times : ShowTime.where(date: Date.today)
   end
 
   # GET /show_times/1 or /show_times/1.json
@@ -90,12 +90,16 @@ class ShowTimesController < ApplicationController
 
   def purchase_tickets
     respond_to do |format|
+      prev = nil
       ActiveRecord::Base.transaction do
         params[:tickets].each do |ticket, value|
-          if value == '1'
-            row, column = ticket.split('-')
-            MovieTicket.create! row: row, column: column, show_time: @show_time
+          next unless value == '1'
+          if !prev.nil? && prev != ticket[0]
+            raise 'Los asientos seleccionados no son de la misma fila'
           end
+          row, column = ticket.split('-')
+          MovieTicket.create! row: row, column: column, show_time: @show_time
+          prev = ticket[0]
         end
       end
     rescue ActiveRecord::RecordInvalid => e
@@ -103,6 +107,13 @@ class ShowTimesController < ApplicationController
         redirect_to select_tickets_show_time_path(@show_time),
                     flash: {
                       error: e.record.errors.values.map(&:join).join(' ')
+                    }
+      end
+    rescue StandardError => e
+      format.html do
+        redirect_to select_tickets_show_time_path(@show_time),
+                    flash: {
+                      error: e.message
                     }
       end
     rescue ActiveRecord::RecordNotUnique
