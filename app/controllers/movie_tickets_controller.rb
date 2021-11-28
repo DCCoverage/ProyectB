@@ -8,8 +8,7 @@ class MovieTicketsController < ApplicationController
   end
 
   # GET /movie_tickets/1 or /movie_tickets/1.json
-  def show
-  end
+  def show; end
 
   # GET /movie_tickets/new
   def new
@@ -17,8 +16,7 @@ class MovieTicketsController < ApplicationController
   end
 
   # GET /movie_tickets/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /movie_tickets or /movie_tickets.json
   def create
@@ -26,7 +24,7 @@ class MovieTicketsController < ApplicationController
 
     respond_to do |format|
       if @movie_ticket.save
-        format.html { redirect_to @movie_ticket, notice: "Movie ticket was successfully created." }
+        format.html { redirect_to @movie_ticket, notice: 'Movie ticket was successfully created.' }
         format.json { render :show, status: :created, location: @movie_ticket }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +37,7 @@ class MovieTicketsController < ApplicationController
   def update
     respond_to do |format|
       if @movie_ticket.update(movie_ticket_params)
-        format.html { redirect_to @movie_ticket, notice: "Movie ticket was successfully updated." }
+        format.html { redirect_to @movie_ticket, notice: 'Movie ticket was successfully updated.' }
         format.json { render :show, status: :ok, location: @movie_ticket }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +50,7 @@ class MovieTicketsController < ApplicationController
   def destroy
     @movie_ticket.destroy
     respond_to do |format|
-      format.html { redirect_to movie_tickets_url, notice: "Movie ticket was successfully destroyed." }
+      format.html { redirect_to movie_tickets_url, notice: 'Movie ticket was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
