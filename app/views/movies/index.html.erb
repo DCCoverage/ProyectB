@@ -19,7 +19,7 @@
       <div class="tile is-ancestor ">
         <% movie_group.each do |movie| %>
           <div class="tile is-parent is-6">
-            <div class="tile is-child card">
+            <div class="tile is-child card" id="<%= "movie-#{movie.id}" %>">
               <header class="card-header">
                 <p class="card-header-title"><%= movie.name %></p>
                 <%= link_to edit_movie_path(movie), class: 'card-header-icon' do %>
