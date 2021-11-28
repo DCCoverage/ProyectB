@@ -1,5 +1,20 @@
 inherit_from:
   - node_modules/@prettier/plugin-ruby/rubocop.yml
 
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'test/**/*'
+
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+  - spec/**/*
+
+Style/Documentation:
   Enabled: false
