@@ -1,13 +1,12 @@
 <section class="section">
   <h1 class="title">Cartelera</h1>
-</section>
-<% if @movie %>
-  <section class="section">
+  <% if @movie %>
   <%= link_to 'Agregar función',
                   new_movie_show_time_path(@movie),
                   class: 'button is-primary'%>
-  </section>
-<% end %>
+  <% end %>
+</section>
+
 <section class="section">
   <div class="container">
 
