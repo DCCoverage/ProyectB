@@ -20,20 +20,21 @@
   </head>
 
   <body>
-    <% if notice %>
-      <div id="notice" class="notification is-primary">
-        <button
-          id="notice-delete"
-          class="delete"
-          onclick="document.body.removeChild(this.parentNode)"
-        ></button>
-        <%= notice %>
-      </div>
-    <% end %>
-
     <%= render 'shared/navbar' %>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+    <% if notice %>
+      <section class="section">
+        <aside class="container">
+          <article id="notice" class="notification is-primary">
+            <button
+              id="notice-delete"
+              class="delete"
+              onclick="document.body.removeChild(this.parentNode)"
+            ></button>
+            <%= notice %>
+          </article>
+        </aside>
+      </section>
+    <% end %>
+    <%= yield %>
   </body>
 </html>

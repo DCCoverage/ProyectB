@@ -1,27 +1,38 @@
-<div class="card">
-  <div class="card-content">
-    <div class="media">
-      <div class="media-content">
-        <p class="title is-4"><%= @show_time.movie.name %></p>
-      </div>
-    </div>
+<section class="section">
+  <main class="container">
+    <article class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4"><%= @show_time.movie.name %></p>
+          </div>
+        </div>
 
-    <div class="content">
-      <p>
-        <strong>Sala:</strong>
-        <%= @show_time.room_id %>
-      </p>
-      <p>
-        <strong>Fecha:</strong>
-        <time datetime=<%= @show_time.date%>> <%= @show_time.date %></time>
-      </p>
-      <p>
-        <strong>Función:</strong>
-        <%= @show_time.when %>
-      </p>
-      <%= link_to 'Comprar entrada', new_show_time_movie_ticket_path(@show_time), class: 'button' %> 
-      <%= link_to 'Editar', edit_show_time_path(@show_time) , class: 'button'%> 
-      <%= link_to 'Atrás', show_times_path , class: 'button'%>
-    </div>
-  </div>
-</div>
+        <div class="content">
+          <p>
+            <strong>Sala:</strong>
+            <%= @show_time.room_id %>
+          </p>
+          <p>
+            <strong>Fecha:</strong>
+            <time datetime="<%= @show_time.date %>">
+              <%= @show_time.date %></time>
+          </p>
+          <p>
+            <strong>Función:</strong>
+            <%= @show_time.when %>
+          </p>
+          <%=
+            link_to 'Seleccionar asientos',
+                    select_tickets_show_time_path(@show_time),
+                    class: 'button'
+          %>
+          <%=
+            link_to 'Editar', edit_show_time_path(@show_time), class: 'button'
+          %>
+          <%= link_to 'Atrás', :back, class: 'button' %>
+        </div>
+      </div>
+    </article>
+  </main>
+</section>

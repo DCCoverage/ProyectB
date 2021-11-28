@@ -6,7 +6,8 @@ Rails
       resources :show_times, only: %i[new create index]
     end
     resources :show_times, only: %i[index edit update destroy show] do
-      resources :movie_tickets, only: %i[new create]
+      get :select_tickets, on: :member
+      post :purchase_tickets, on: :member
     end
     resources :movie_tickets, except: %i[new create]
 
