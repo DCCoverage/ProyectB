@@ -1,5 +1,10 @@
-<h1>Editar Película</h1>
+<div class="columns is-centered">
+    <div class="form-container box">
 
-<%= render 'form', movie: @movie %>
+        <h1 class="title">Editar Película</h1>
 
-<%= link_to 'Atrás', :back, class: 'button' %>
+        <%= render 'form', movie: @movie %>
+
+        <%= link_to 'Atrás', :back, class: 'button back-button' %>
+    </div>
+</div>

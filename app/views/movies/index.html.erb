@@ -4,13 +4,14 @@
     <p class="subtitle">
       Encuentra los nuevos estrenos y las mejores películas
     </p>
+     <%=
+    link_to 'Agregar una pelicula', new_movie_path, class: 'button is-warning'
+  %>
   </div>
 </section>
 
-<section class="section">
-  <%=
-    link_to 'Agregar una pelicula', new_movie_path, class: 'button is-warning'
-  %>
+<section>
+ 
 </section>
 
 <section class="section">
@@ -29,7 +30,7 @@
                 <% end %>
               </header>
               <div class="card-image">
-                <figure class="image is-3by2">
+                <figure class="image is-4by5">
                   <%= image_tag movie.image, class: 'is-fullwidth' %>
                 </figure>
               </div>

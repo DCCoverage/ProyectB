@@ -1,12 +1,17 @@
-<h1 class="title">Editar Función</h1>
+<div class="columns is-centered">
+  <div class="form-container box">
 
-<%=
+    <h1 class="title">Editar Función</h1>
+
+    <%=
   render partial: 'form',
          show_time: @show_time,
          locals: {
            url: show_time_path(@show_time),
            method: :put,
          }
-%>
+    %>
 
-<%= link_to 'Atrás', :back, class: 'button' %>
+    <%= link_to 'Atrás', :back, class: 'button back-button' %>
+  </div>
+</div>
