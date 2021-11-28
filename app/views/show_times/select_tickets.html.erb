@@ -1,17 +1,58 @@
-<% if flash[:error] %>
-  <article class="message is-danger">
-    <div class="message-body">
-      <%= flash[:error] %>
-    </div>
-  </article>
-<% end %>
-
-<%= form_with url: purchase_tickets_show_time_path(@show_time), method: :post do |form| %>
-  <% %w[A B C D].each do |row| %>
-    <% (1...12).each do |column| %>
-      <%= form.check_box "tickets[#{row}-#{column}]", class: 'seat' %>
-      <%= form.label "tickets[#{row}-#{column}]", "#{row}#{column}" %>
+<section class="section">
+  <main class="container is-fluid">
+    <% if flash[:error] %>
+      <article class="message is-danger">
+        <div class="message-body">
+          <%= flash[:error] %>
+        </div>
+      </article>
     <% end %>
-  <% end %>
-  <%= form.submit 'Reservar asientos' %>
-<% end %>
+    <%= form_with url: purchase_tickets_show_time_path(@show_time), method: :post do |form|%>
+      <main class="tile is-ancestor">
+        <section class="tile is-parent is-12">
+          <article
+            class="tile is-child box is-size-3 has-text-centered has-background-success has-text-white has-text-weight-bold"
+          >
+            Pantalla
+          </article>
+        </section>
+      </main>
+      <% %w[A B C D].each do |row| %>
+        <main class="tile is-ancestor">
+          <% (1...13).each do |column| %>
+            <section class="tile is-parent is-1">
+              <article class="tile is-child box">
+                <%=
+                  form.label "tickets[#{row}-#{column}]",
+                             "#{row}#{column}",
+                             class: 'is-size-7 has-text-weight-bold '
+                %>
+                <br />
+                <span
+                  class="icon is-medium <%=
+  if @occupied_tickets.include?("#{row}-#{column}")
+    'has-text-danger'
+  else
+    'has-text-success'
+  end
+%>"
+                >
+                  <i class="fas fa-2x fa-couch"></i>
+                </span>
+                <br />
+                <% if @occupied_tickets.include?("#{row}-#{column}") %>
+                  <p class="is-size-7 has-text-weight-bold">OCUPADO</p>
+                <% else %>
+                  <%=
+                    form.check_box "tickets[#{row}-#{column}]", class: 'seat'
+                  %>
+                <% end %>
+              </article>
+            </section>
+          <% end %>
+        </main>
+      <% end %>
+      <%= form.submit 'Reservar asientos', class: 'button is-primary' %>
+    <% end %>
+  </main>
+</section>

@@ -91,9 +91,11 @@ class ShowTimesController < ApplicationController
   def purchase_tickets
     respond_to do |format|
       ActiveRecord::Base.transaction do
-        params[:tickets].each do |ticket, _|
-          row, column = ticket.split('-')
-          MovieTicket.create! row: row, column: column, show_time: @show_time
+        params[:tickets].each do |ticket, value|
+          if value == '1'
+            row, column = ticket.split('-')
+            MovieTicket.create! row: row, column: column, show_time: @show_time
+          end
         end
       end
     rescue ActiveRecord::RecordInvalid => e

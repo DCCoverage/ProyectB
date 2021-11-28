@@ -1,4 +1,5 @@
 class ShowTime < ApplicationRecord
+  include ActiveModel::AttributeMethods
   belongs_to :movie
   belongs_to :room
 
@@ -8,6 +9,12 @@ class ShowTime < ApplicationRecord
               scope: :when,
               message: 'Ya existe una función en ese horario en esa sala.'
             }
-            
+
   enum when: %i[morning afternoon evening]
+
+  def when_spanish
+    { 'morning' => 'matine', 'afternoon' => 'tanda', 'evening' => 'Noche' }[
+      self.when
+    ]
+  end
 end
