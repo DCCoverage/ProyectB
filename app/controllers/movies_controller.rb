@@ -26,12 +26,8 @@ class MoviesController < ApplicationController
         format.html do
           redirect_to @movie, notice: 'Película creada con éxito.'
         end
-        format.json { render :show, status: :created, location: @movie }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json do
-          render json: @movie.errors, status: :unprocessable_entity
-        end
       end
     end
   end
@@ -43,12 +39,8 @@ class MoviesController < ApplicationController
         format.html do
           redirect_to @movie, notice: 'Película actualizada con éxito.'
         end
-        format.json { render :show, status: :ok, location: @movie }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json do
-          render json: @movie.errors, status: :unprocessable_entity
-        end
       end
     end
   end
