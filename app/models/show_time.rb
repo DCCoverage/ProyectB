@@ -6,7 +6,7 @@ class ShowTime < ApplicationRecord
   has_many :movie_tickets, dependent: :destroy
   validates :room_id,
             uniqueness: {
-              scope: :when,
+              scope: [:when, :date],
               message: 'Ya existe una función en ese horario en esa sala.'
             }
 
